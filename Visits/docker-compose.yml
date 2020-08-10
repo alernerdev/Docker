@@ -1,0 +1,11 @@
+version: '3'
+# build 2 containers: 1 from redis image, one from doing our own build
+services:
+# docker-compose lets these images communicate with each other
+    redis-server:
+        image: 'redis'
+    node-app:
+        build: .
+        ports:
+ # this is just from our local machine into built container
+            - "4001:8081"
